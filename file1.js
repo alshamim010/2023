@@ -338,3 +338,104 @@ console.log(fruits);
 // array shift (for remove the first item)
 fruits.shift();
 console.log(fruits);
+
+// primitive data type example
+
+let num8 = 5;
+let num9 = num8;
+console.log(num8);
+console.log(num9);
+num8++
+console.log(num8);
+console.log(num9);
+
+// reference data type example
+let array1 = ["item1", "item2"];
+let array2 = array1;
+console.log(array1);
+console.log(array2);
+array1.push("item3")
+console.log(array1);
+console.log(array2);
+
+// how to clone array
+let array3 = ["apple", "orange"];
+// let array4 = array3.slice(0);    //slice way
+// let array4 = [].concat(array3)   //concat way
+// let array4 = [...array3];           //spread operator
+//  let array4 = array3.slice(0).concat(["cherry", "grapes"]);  // If i need to add extra in the array4 variable
+//  let array4 = [].concat(array3, ["cherry", "grapes"]);       // If i need to add extra in the array4 variable
+let array4 = [...array3, "item3", "item4"];                     // If i need to add extra in the array4 variable
+ // if i have oneNoreArray = ["item5", "item6"]  //then it will be  let array4 = [...array3, ...oneMoreArray];                                                                      
+
+array3.push("cherry")
+console.log(array3===array4);
+console.log(array3);
+console.log(array4);
+
+// for loop in array
+
+let fruits2 = ["apple", "mango", "grapes"];
+let fruits3 = [];  // if I puse value in the Array
+
+// for output at a time
+for(let r=0; r < fruits2.length; r++){
+    // console.log(fruits2[r]);
+    // for uppercase
+    // console.log(fruits2[r].toUpperCase());
+    console.log("if I puse value in the Array");
+    fruits3.push(fruits2[r]);
+};
+console.log(fruits3);
+
+// Use (const) variable name for array or reference type
+
+const fruits5 = ["pineapple", "apple", "cherry"];
+//fruits5 = [];  const safe you from wrong code.
+fruits5.push("banana");
+console.log(fruits5);
+
+// while loop in array
+
+const fruits6 = ["Pineapple", "Apple", "Cherry"];
+const fruits7 = []; //For push
+let y = 0;
+while(y<fruits6.length){
+    console.log("This while loop in the array");
+    console.log(fruits6[y]);
+    // For Push
+    fruits7.push(fruits6[y]);
+    y++;
+};
+console.log("I'm push data of fruits6 in the fruits7");
+console.log(fruits7);
+
+// for of loop in array
+const fruits9 = ["Fruits1", "Fruits2", "Fruits3"];
+for(let fruits8 of fruits9){
+    console.log("This (for of) loop");
+    console.log(fruits8);
+};
+
+// for in loop in array
+const fruits10 = ["fruits8", "fruits9", "fruits10"];
+for(let index in fruits10){
+    console.log(fruits10[index]);
+}
+
+// array  destructuring
+const myArray = ["Value1", "Value2", "Value3", "Value4"];
+// let myVar1 = myArray[0];
+// let myVar2 = myArray[1];
+// console.log(myVar1);
+// console.log(myVar2);
+
+// let [myVar1, myVar2] = myArray;
+// let [myVar1, , myVar2] = myArray;
+let [myVar1, myVar2, ...myRestArray] = myArray;
+console.log(myVar1);
+console.log(myVar2);
+console.log("This is Rest array")
+console.log(myRestArray);
+
+// ***********************************
