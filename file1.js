@@ -439,3 +439,49 @@ console.log("This is Rest array")
 console.log(myRestArray);
 
 // ***********************************
+
+// Objects  (this is also reference type like array)
+//arrays are good but not sufficient
+// for real world data
+// Objects store key value pairs
+// Objects don't have index
+
+// How to create Objects
+const lablu = {name:"Lablu Mia",age:28};
+console.log(lablu);
+console.log(typeof lablu);
+
+// How to access data from Objects
+console.log(lablu.name);
+console.log(lablu.age);
+
+const badhon = {
+    name: "Badhon",
+    age: "28",
+    hobbies: ["Reading", "Watching Movie"]
+};
+
+console.log(badhon);
+// output by the dot notation
+console.log(badhon.hobbies);
+// output by the bracket notation
+console.log(badhon["age"]);
+
+// How to add key value pair to Objects
+// add by the dot notation
+badhon.gender = "Male";
+console.log(badhon);
+
+// add by the bracket notation
+badhon["game"] = "Football",
+console.log(badhon);
+
+const phone = "Phone number";
+const isran = {
+    name: "Badhon",
+    age: "28",
+    hobbies: ["Reading", "Watching Movie"]
+};
+
+isran[phone] = "01313445566";
+console.log(isran);
