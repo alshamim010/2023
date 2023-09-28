@@ -485,3 +485,30 @@ const isran = {
 
 isran[phone] = "01313445566";
 console.log(isran);
+
+// How to iterate Object
+
+const torab = {
+    name : "Torab islam",
+    age : 33,
+    hobbies : "Teaching"
+};
+
+// there are two type looping for object
+//for in loop
+// object.keys
+for(let key in torab){
+    console.log(key);
+    console.log(torab[key]);
+};
+
+for(let key in torab){
+    console.log(`${key} : ${torab[key]}`);
+};
+
+console.log("Property and key access by the Object keys in the bellow");
+console.log(Object.keys(torab));
+
+for(let key of Object.keys(torab)){
+    console.log(torab[key]);
+}
