@@ -299,7 +299,7 @@ for(let e = 1;e<=10;e++){
 console.log("Here is continue after 6");
 
 // do while loop
-let s = 8;
+let s = 3;
 do{
     console.log(s);
     s++
@@ -366,7 +366,7 @@ let array3 = ["apple", "orange"];
 //  let array4 = array3.slice(0).concat(["cherry", "grapes"]);  // If i need to add extra in the array4 variable
 //  let array4 = [].concat(array3, ["cherry", "grapes"]);       // If i need to add extra in the array4 variable
 let array4 = [...array3, "item3", "item4"];                     // If i need to add extra in the array4 variable
- // if i have oneNoreArray = ["item5", "item6"]  //then it will be  let array4 = [...array3, ...oneMoreArray];                                                                      
+ // if i have oneMoreArray = ["item5", "item6"]  //then it will be  let array4 = [...array3, ...oneMoreArray];                                                                      
 
 array3.push("cherry")
 console.log(array3===array4);
@@ -511,4 +511,186 @@ console.log(Object.keys(torab));
 
 for(let key of Object.keys(torab)){
     console.log(torab[key]);
+};
+
+// Computed properties
+
+const key1 = "objkey1";
+const key2 = "objkey2";
+
+const value10 = "myvalue10";
+const value11 = "myvalue11";
+
+// we need to get like this
+
+// const obj = {
+//     objkey1 : "myvalue10",
+//     objkey2 : "myvalue11",
+// };
+
+//Here is two way
+
+const obj1 = {
+    [key1] : value10,
+    [key2] : value11,
+};
+console.log(obj1);
+
+// another way
+
+const obj2 = {};
+
+obj2[key1] = value10;
+obj2[key2] = value11;
+
+console.log(obj2);
+
+// Again revision of spread operator
+const array6 = [1, 2, 3];
+const array7 = [5, 7, 8];
+const myNewArray = [...array6, ...array7, 9, 10];
+console.log(myNewArray);
+
+// spread operator in Objects
+
+const obj5 = {
+    key5: "value5",
+    key6: "value6",
+};
+const obj6 = {
+    key7: "value7",
+    key8: "value8",
 }
+const myNewObj = {...obj5, ...obj6, key9: "value9", key10: "value10"};
+console.log(myNewObj);
+
+// Object destructuring
+const band = {
+    bandName: "let zepplin",
+    famousSong: "stairway to heaen",
+    year: 1968,
+    anotherFamousSong: "kasmir",
+};
+
+const {bandName, famousSong, ...restProbs} = band;
+console.log(bandName, famousSong);
+console.log("Below output is restProbs")
+console.log(restProbs);
+
+// change the variable name
+// const {bandName: bandName2, famousSong: famousSong2} = band;
+// console.log(bandName2);
+
+// Objects inside array
+// very useful in real world applications
+
+const users = [
+    {userId: 1, firstName1: "Badhon,", gender1: "Male"},
+    {userId: 2, firstName1: "Lablu,", gender1: "Male"},
+    {userId: 3, firstName1: "Isran,", gender1: "Male"},
+];
+
+//(for of) loop
+for(let user of users){
+    // console.log(user);
+    // console.log(user.firstName1);
+    // console.log(user.userId);
+};
+
+// nested destructuring
+
+// const [user1, user2, user3] = users;
+// console.log(user2);
+
+const[{firstName1}, , {gender1}] = users;
+console.log(firstName1);
+console.log(gender1);
+
+// If we need to change variable name
+// const[{firstName1: changedName}, , {gender1: chandgedGender}] = users;
+// console.log(changedName);
+// console.log(chandgedGender);
+
+// ********************************************
+
+// Function
+
+// basic structure
+
+function singHappyBirthday(){
+    console.log("Happy Birthday to you..");
+};
+singHappyBirthday();
+
+// ****
+function twoPlusFour(){
+    return 2+4
+};
+const returndValue = twoPlusFour();
+console.log(returndValue);
+
+// ****
+// here number1 and number2 is called Prametter
+function sumTwoNumber(number1, number2){   
+    return number1 + number2;
+};
+const totalSum = sumTwoNumber(17,13);   // here passing the arguments
+console.log(totalSum);
+
+// ****
+
+function isEven(evenNumber){
+    if(evenNumber % 2 === 0){
+        return true;
+    }
+    return false;
+}
+
+console.log(isEven(5));
+console.log(isEven(10));
+
+// *****
+// More Short code
+
+// function isEven2(evenNumber2){
+//     return evenNumber2 % 2 === 0;
+// }
+// console.log(isEven2(5));
+// console.log(isEven2(10));
+
+// ****
+// input = string
+// output = first character
+
+function firstChar(giveString){
+    return giveString[0];
+};
+console.log(firstChar("Shamim"));
+
+// *****
+// input = array, target (number)
+// uptput = index of target if target present in array
+
+function findTarget(arra, target){
+    for(let z = 0; z<arra.length; z++){
+        if(arra[z]===target){
+            return z;
+        }
+    }
+    return -1;
+};
+
+const myArra = [3,9,56,7,66,2];
+const ans = findTarget(myArra, 2);
+console.log(ans);
+const ans2 = findTarget(myArra, 50);
+console.log(ans2);
+
+// Function expression example
+
+const anotheSum = function(number1, number2){   
+    return number1 + number2;
+};
+
+const anotheAns = anotheSum(88,12);
+console.log(anotheAns);
