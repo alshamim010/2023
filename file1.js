@@ -694,3 +694,128 @@ const anotheSum = function(number1, number2){
 
 const anotheAns = anotheSum(88,12);
 console.log(anotheAns);
+
+// Arrow Function
+const singHappyBirthday2 = () =>{
+    console.log("Happy Birthday to you..");
+};
+singHappyBirthday2();
+console.log("Above code is Arrow Function");
+
+// ****
+const sumTwoNumber2 = (number3, number4) =>{   
+    return number3 + number4;
+};
+const totalSum2 = sumTwoNumber2(17,13);   // here passing the arguments
+console.log(totalSum2);
+
+// ****
+
+const isEven2 = (evenNumber2) => {
+    if(evenNumber2 % 2 === 0){
+        return true;
+    }
+    return false;
+}
+
+console.log(isEven2(5));
+console.log(isEven2(10));
+
+// ****  When exsit single pramitter then we can do without bracket
+const isEven3 = evenNumber3 => {
+    if(evenNumber3 % 2 === 0){
+        return true;
+    }
+    return false;
+}
+
+// another way for single pramitter
+// const isEven4 = evenNumber4 => evenNumber4 % 2 === 0;
+
+console.log(isEven3(5));
+console.log(isEven3(10));
+
+// hoisting
+
+// Only happaned for function decleareation
+
+hello()
+function hello(){
+    console.log("Hello World");
+};
+
+// ******
+// functions inside function
+
+// function app(){}
+const app = () => {
+
+    const myFunc = () => {
+        console.log("Hello from myFunc");
+    };
+
+    const addTwo = (akNum, duiNum) => {
+        return akNum + duiNum;
+    };
+
+    const mul = (akNum1, duiNum1) => akNum1 * duiNum1; 
+
+    console.log("Inside App");
+    myFunc()
+    console.log(addTwo(55, 5));
+    console.log(mul(5,5));
+
+}
+app();
+
+// lexical scope
+// block scope vs function scope
+// let and const are block scope
+// var is function scope
+
+// default parameters
+
+function addTwo2(a,b=1){
+    return a + b;
+}
+const ans3 = addTwo2(5,15); // If we are not given the second argument value then it takes default (b=1) value;
+console.log(ans3);
+
+// ****
+// rest parameters
+
+function myFunc2(a,b,...c){
+    console.log(a);
+    console.log(b);
+    console.log(c);
+}
+myFunc2(5,6,7,8,9,10,11,12);
+
+// rest parameters function
+
+function addAllSum(...numbers){
+    let total3 = 0;
+    for(let number6 of numbers){
+        total3 = total3 + number6;
+    }
+    return total3;
+}
+const ans4 = addAllSum(1,2,3,4,5,6,7,8,9,10);
+console.log(ans4);
+
+// ****
+// parameters destructuring
+
+// use in the object
+// react 
+
+const person2 = {
+    firstName5: "Isran Khan",
+    gender5: "Male",
+};
+
+function printDetails({firstName5, gender5}){
+    console.log(firstName5);
+    console.log(gender5);
+};
+printDetails(person2);
