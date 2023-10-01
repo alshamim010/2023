@@ -322,8 +322,8 @@ console.log(typeof fruits);
 // that's Array is a opject
 
 // array push (this is add new item in the last at the array)
- fruits.push("Orange", "Grapes");
- console.log(fruits);
+    fruits.push("Orange", "Grapes");
+    console.log(fruits);
 
 //  array pop (for remove the last item)
 
@@ -819,3 +819,222 @@ function printDetails({firstName5, gender5}){
     console.log(gender5);
 };
 printDetails(person2);
+
+// ****
+// callback functions
+
+function myFunction1(name){
+    console.log("This is Call back function");
+    console.log(`Hello my name is ${name}`);
+};
+
+function myFunction2(callback){
+    console.log("This Original function");
+    callback("Mr. Nayan");
+}
+
+myFunction2(myFunction1);
+
+// ****
+// function returning function
+
+function myFuncReturn(){
+    function funcReturn(){
+        return "Hello Return function";
+    }
+    return funcReturn;
+}
+
+const ans5 = myFuncReturn()
+console.log(ans5());
+
+// important array methods
+
+const numbers1 = [2,3,4,5,6];
+
+function multiplyBy2(number, index){
+    console.log("index is ", index);
+    console.log(`${number}*2 = ${number*2}`);
+};
+
+for(let w = 0; w< numbers1.length; w++){
+    multiplyBy2(numbers1[w],w);
+}
+
+// ****
+const numbers2 = [2,3,4,5,6];
+
+function multiplyBy3(number9, index){
+    console.log(`Index is ${index} Number is ${number9}`);
+    //console.log(`${number9}*2 = ${number9*2}`);
+};
+
+// for(let t = 0; t< numbers2.length; t++){
+//     multiplyBy3(numbers2[t],t);
+// }
+
+// we can use against above for loop cond
+numbers2.forEach(multiplyBy3);   // forEach doing index pass but we can do it optional
+
+//another way
+const great = [11,12,13,14];
+
+great.forEach(function(number, index){
+    console.log(`Index is ${index} Number is ${number}`);
+});
+
+
+// ****
+// Real use of forEach
+const visitor = [
+    {firstName: "Isran", age: 27},
+    {firstName: "Badhon", age: 25},
+    {firstName: "Lablu", age: 24},
+    {firstName: "Shamim", age: 28},
+];
+
+// visitor.forEach(function(visit){
+//     console.log(visit.firstName);
+// });
+
+// another way
+for(let visit of visitor){
+    console.log(visit.age);
+}
+
+// another way with arraw function
+visitor.forEach (visit=>{
+    console.log(visit.firstName);
+});
+
+// map method   which is very very important
+//map give us a new array that's why we need to write return
+const forSquare = [3,4,5];
+
+const square = function(numb){
+    return numb * numb;  // in the map method it must be return
+};
+
+const squareNumber = forSquare.map(square);
+console.log(squareNumber);
+
+// others way
+
+const forSquare2 = [6,7,8];
+
+const squareNumber2 = forSquare2.map(function(square2){
+    return square2 * square2;
+});
+console.log(squareNumber2);
+
+const forSquare3 = [9,10,11];
+
+// array function
+const squareNumber3 = forSquare3.map((square3)=>{
+    return square3 * square3;
+});
+console.log(squareNumber3);
+
+// Real use of map
+const visitor2 = [
+    {firstName: "Isran", age: 27},
+    {firstName: "Badhon", age: 25},
+    {firstName: "Lablu", age: 24},
+    {firstName: "Shamim", age: 28},
+];
+
+visitor2.forEach((visit2)=>{
+    console.log(visit2.firstName);
+});
+
+// filter method
+
+const numbersFilter = [1,2,3,4,5,6,7,8,9,10];
+
+const isOdd = function(oddNumber){
+    return oddNumber%2!==0;
+};
+
+const oddNumb = numbersFilter.filter(isOdd);
+console.log(oddNumb);
+
+// arrow function
+const oddNumb2 = numbersFilter.filter((isEven)=>{
+    return isEven%2 ===0;
+});
+console.log(oddNumb2);
+
+// ****
+// reduse method
+
+const redu = [1,2,3,4,5,6,7,8,9,10];
+
+const totalSums = redu.reduce((accumulator, currentValue)=>{
+    return accumulator + currentValue;
+});
+console.log(totalSums);
+
+// real use of reduce method
+
+const userCart = [
+    {productId: 1, productName: "Mobile", price: 13000},
+    {productId: 2, productName: "TV", price: 17000},
+    {productId: 3, productName: "Laptop", price: 20000},
+];
+
+const totalAmount = userCart.reduce((totalPrice, currentProduct)=>{
+    return totalPrice + currentProduct.price;
+}, 0);
+console.log(totalAmount);
+
+// ****
+// sort method
+
+const sortingNumber =[3,2,45,12,43,4,8,];
+
+sortingNumber.sort((a,b)=>{
+    return a-b;
+});
+
+console.log(sortingNumber);
+
+// real use of sort method
+
+const products = [
+    {productId: 1, productName: "p1", price: 400},
+    {productId: 2, productName: "p2", price: 200},
+    {productId: 3, productName: "p3", price: 8000},
+    {productId: 4, productName: "p4", price: 3000},
+    {productId: 5, productName: "p5", price: 700},
+];
+
+// lowToHigh
+const lowToHigh = products.sort((a,b)=>{
+    return a.price-b.price;
+});
+
+console.log(lowToHigh);
+
+// ****
+// find method
+const animals = ["hello","cat","dog","lion"];
+const  animalsResult = animals.find((string)=>{
+    return string.length===3;
+})
+console.log(animalsResult);
+
+// ****
+// real use of find method
+const userFind = [
+    {userId: 1, userName: "Badhon"},
+    {userId: 2, userName: "Isran"},
+    {userId: 3, userName: "Lablu"},
+    {userId: 4, userName: "Shamim"},
+    {userId: 5, userName: "Ebadul"},
+];
+
+const myUser= userFind.find((user)=>{
+    return user.userId===3;
+});
+// const myUser = userFind.find((user)=>user.userId===3);
+console.log(myUser);
