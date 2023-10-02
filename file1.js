@@ -1038,3 +1038,68 @@ const myUser= userFind.find((user)=>{
 });
 // const myUser = userFind.find((user)=>user.userId===3);
 console.log(myUser);
+
+// ****
+// every method
+
+const everyNumber = [2,4,6,8,10];
+function isEven5(everyNumber){
+    return everyNumber % 2 === 0;
+}
+const everyAns = everyNumber.every(isEven5);
+// const everyAns = everyNumber.every((everyNumber)=>everyNumber%2===0);
+console.log(everyAns);
+
+// real use of every method
+
+const userCart2 = [
+    {productId: 1, productName: "Mobile", price: 13000},
+    {productId: 2, productName: "TV", price: 17000},
+    {productId: 3, productName: "Laptop", price: 20000},
+];
+
+const less30k = userCart2.every((isUserCartPriceLess)=>isUserCartPriceLess.price < 30000);
+console.log(less30k);
+
+// some method
+// if anynumber is even then it shows the true from the array data
+const userCart3 = [
+    {productId: 1, productName: "Mobile", price: 13000},
+    {productId: 2, productName: "TV", price: 17000},
+    {productId: 3, productName: "Laptop", price: 20000},
+    {productId: 4, productName: "macbook", price: 200000},
+];
+
+const big100k = userCart3.some((isUserCartPriceBig)=>isUserCartPriceBig.price > 100000);
+console.log(big100k);
+
+// ****
+// fill method
+// value , start, end
+
+const myFillArray = new Array(10).fill(1);
+console.log(myFillArray);
+
+const myFillArray2 = [1,2,3,4,5,6,7,8];
+myFillArray2.fill(-1,2,5);
+console.log(myFillArray2);
+
+// ****
+// splice method
+// start, delete, insert
+
+// delete
+const mySpliceArray = ["item1", "item2", "item3"];
+mySpliceArray.splice(1,1);
+console.log(mySpliceArray);
+
+// insert
+const mySpliceArray2 = ["item1", "item2", "item3"];
+mySpliceArray2.splice(1,0, "Inserted Item");
+console.log(mySpliceArray2);
+
+// delete & insert
+const mySpliceArray3 = ["item1", "item2", "item3"];
+mySpliceArray3.splice(1,2, "Inserted Item1", "Inserted Item2");
+console.log(mySpliceArray3);
+
