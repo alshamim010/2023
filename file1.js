@@ -1103,3 +1103,65 @@ const mySpliceArray3 = ["item1", "item2", "item3"];
 mySpliceArray3.splice(1,2, "Inserted Item1", "Inserted Item2");
 console.log(mySpliceArray3);
 
+// *****************************
+// iterables
+// where we can add (for of loops). That is called iterables
+// like "string", "array" are iterable
+
+const firstIterable = "Shamim";
+
+for(let char of firstIterable){
+    console.log(char);
+};
+
+const arrayIterable = ["item1", "item2", "item3"];
+for(let itemIterable of arrayIterable){
+    console.log(itemIterable);
+};
+
+// array like object
+// which have length property
+// and we can access them by the index;
+// example : string
+
+const arrayLikeObj = "shamim";
+console.log(arrayLikeObj.length);
+console.log(arrayLikeObj[2]);
+
+// Sets (it is iterable)
+// store date
+// sets also have it's own methods
+// no index-basex access
+// Order is not guaranted
+// unique items only (no duplicates allowed);
+
+// Set create or declearation
+const numberSet = new Set(["1,2,3"]);
+console.log(numberSet);
+
+const arrayIterable2 = ["item1", "item2", "item3"];
+const numberSetBlank = new Set();
+numberSetBlank.add(2);
+numberSetBlank.add(3);
+numberSetBlank.add(arrayIterable2); // we can add or assaign another array
+numberSetBlank.add(["item4", "item5"]);  // if we add same "array item" by the square brackets then it take both for the deference address
+numberSetBlank.add(["item4", "item5"]);  // if we add same "array item" by the square brackets then it take both for the deference address
+//We can check do we have any perticular exsting number or anythings 
+if(numberSetBlank.has(2)){
+    console.log("We have")
+}else{
+    console.log("We haven't")
+}
+console.log(numberSetBlank);
+
+// real use of Set
+const idsFinding = [1,2,3,4,2,1,3,4,5,6,];
+const uniqueIdsSet = new Set(idsFinding); // we can pass array here. Because it is iterable 
+console.log(uniqueIdsSet)   // here we can't use length property
+
+// if we finding how much length it is. then we need to use bellow mehtod
+let length = 0;
+for(let element of uniqueIdsSet){
+    length++;
+};
+console.log(length);
