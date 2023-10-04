@@ -1165,3 +1165,132 @@ for(let element of uniqueIdsSet){
     length++;
 };
 console.log(length);
+
+// ************
+// Maps
+// map is an iterable
+// store data in ordered fashion
+// store key value pair (like object)
+// duplicate keys are not allowed like objects
+
+// different between maps an objects
+// objects can only have string or symbol
+// as key
+// in maps we can use anything as key
+// like array, number, string
+
+// It also called Object literal
+// key--> will be "String" 99.99
+// key--> will be "Symble"
+
+const person3 = {
+    firstName: "shamim",
+    age: 30,
+    1: "one",
+};
+// console.log(person3["firstName"])
+console.log(person3.firstName);
+for(let key in person3){
+    console.log(typeof key);
+};
+
+// Map== doing key value pair store
+const person4 = new Map();
+person4.set("firstName", "Isran");
+person4.set("age", 25);
+person4.set(1, "One");
+// person4.set([1,2,3], "Onetwothree");
+// person4.set({1: "one"}, "Onetwothree");
+console.log(person4);
+console.log(person4.get("firstName"));  // for access data need to use get() for the Map()
+// console.log(person4.keys());
+for(let key of person4.keys()){
+    console.log(key, typeof key);
+}
+
+// here we can use fo of loop which give us key value pair
+for(let key of person4){
+    console.log(key);
+    console.log(typeof key);
+    console.log(Array.isArray(key));
+}
+
+// for destructure we can coding like this
+for(let [key, value] of person4){
+    console.log(key, value);
+};
+
+const person5 = new Map([["firstName", "Badhon"], ["age", 25]]);
+console.log(person5);
+
+// ****
+const person6 = {
+    id: 1,
+    firstName: "lablu",
+}
+const extraInfo = new Map();
+extraInfo.set(person6, {age: 23, gender: "male"});
+console.log(person6.firstName);
+console.log(extraInfo.get(person6).age);
+
+// clone using Object.assign
+
+const obj7 = {
+    key1: "value1",
+    key2: "value2",
+}
+
+// const obj8 = obj7; //*
+// const obj8 = {...obj7}  // but when we use spread opertor then it show in only one objects
+// another way which is Object.assign
+const obj8 = Object.assign({}, obj7);
+
+obj7.key3 = "value3" // * if we add this then it shows both in the two object
+console.log(obj7);
+console.log(obj8);
+
+// Optional chaining
+
+const user4 = {
+    firstName: "shamim",
+    // address: {houseNumber: "2345"},
+};
+console.log(user4?.firstName);
+console.log(user4?.address?.houseNumber);
+
+// ************************************************
+// methods
+// function inside object
+const personMethod = {
+    firstName: "Al-Shamim",
+    age: 30,
+    about: function(){
+        console.log(`Person name is ${this.firstName} and age is ${this.age}`);  // here (this) is fully (personMethod) object
+    },
+};
+personMethod.about();
+
+//*****
+
+function personInfo(){
+    console.log(`Person name is ${this.firstName} and age is ${this.age}`);  // here (this) is fully (personMethod) object
+};
+
+const personMethod1 = {
+    firstName: "Isran",
+    age: 29,
+    about: personInfo,
+};
+const personMethod2 = {
+    firstName: "Badhon",
+    age: 26,
+    about: personInfo,
+};
+const personMethod3 = {
+    firstName: "Lablu",
+    age: 27,
+    about: personInfo,
+};
+personMethod1.about();
+personMethod2.about();
+personMethod3.about();
