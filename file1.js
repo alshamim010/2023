@@ -1294,3 +1294,49 @@ const personMethod3 = {
 personMethod1.about();
 personMethod2.about();
 personMethod3.about();
+
+// this
+
+// function myFuncThis(){
+//     console.log(this)
+// };
+// myFuncThis();
+
+const user5 = {
+    firstName: "Lablu",
+    age: 26,
+    about: function(){
+        console.log(this.firstName, this.age);
+    }
+};
+const user6 = {
+    firstName: "Badhon",
+    age: 25,
+};
+
+user5.about.call(user6);  // need to borrow about data from usre5
+
+// *******
+
+function about2(hobby, musician){
+    console.log(this.firstName, this.age, hobby, musician);
+}
+
+const user7 = {
+    firstName: "Lablu2",
+    age: 26,
+};
+const user8 = {
+    firstName: "Badhon2",
+    age: 25,
+};
+// for call
+about2.call(user7, "reading", "jakshan");
+about2.call(user8, "writing", "mozart");
+
+// for apply
+about2.apply(user7, ["reading", "jakshan"]); // passing by the array
+
+//for bind    // bind return the function
+const funcBind = about2.bind(user8, "sleeping", "mozart");
+funcBind();
