@@ -1340,3 +1340,244 @@ about2.apply(user7, ["reading", "jakshan"]); // passing by the array
 //for bind    // bind return the function
 const funcBind = about2.bind(user8, "sleeping", "mozart");
 funcBind();
+
+// don't mistake just do it like this
+
+const user9 = {
+    firstName: "Ali Hossen",
+    age: 23,
+    about3: function(){
+        console.log(this.firstName, this.age);
+    }
+};
+
+const myFuncBind = user9.about3.bind(user9);
+myFuncBind();
+
+
+// ************************************
+
+// Arrow Function  ***
+//  arrow function has no (this) method. arrow function take the (this) his surrounding environments
+
+const user11 = {
+    firstName: "Lablu",
+    age: 25,
+    about4: () =>{
+        console.log(this.firstName, this.age);
+    }
+};
+
+// user11.about4();  //here (this) takes the value from the window object
+
+const user12 = {
+    firstName: "Shawghath",
+    age: 25,
+    // we can write method like this
+    about5(){
+        console.log(this.firstName, this.age);
+    }
+};
+
+user12.about5();
+
+// ***********
+
+
+// If we want to get many users or objects data then don't write the code like this
+
+const user13 = {
+    firstName: "Badhon",
+    lastName: "Islam",
+    email: "badhon@gmail.com",
+    age: 25,
+    address: "House Number 13, Chanda Baria, Rongpur",
+    about6: function(){
+        return `${this.firstName} is ${this.age} years old`
+    },
+    is18: function(){
+        return this.age >= 18;
+    }
+}
+
+// *******
+// function (that function create object)
+// add key value pair
+// then it's return object
+
+// Then write like this if we want many object data
+
+// function createUser(firstName, lastName, email, age, address){
+//     const user14 = {};
+//     user14.firstName = firstName;
+//     user14.lastName = lastName;
+//     user14.email = email;
+//     user14.age = age;
+//     user14.address = address;
+//     user14.about7 = function(){
+//         return `${this.firstName} is ${this.age} years old`
+//     };
+//     user14.is18 = function(){
+//         return this.age >= 18;
+//     };
+//     return user14;
+// }
+// const user20 = createUser("Badhon", "Islam", "badhon@gmail.com", "18", "my address");
+
+// console.log(user20);
+
+// const is18 = user20.is18();
+// console.log(is18);
+
+// const about7 = user20.about7();
+// console.log(about7);
+
+// ******
+// But bellow code more better then above code
+// because methods not creating frequently just we call reference
+
+const userMethods = {
+    about7 : function(){
+        return `${this.firstName} is ${this.age} years old`
+    },
+    is18 : function(){
+        return this.age >= 18;
+    }
+};
+
+function createUser(firstName, lastName, email, age, address){
+    const user14 = {};
+    user14.firstName = firstName;
+    user14.lastName = lastName;
+    user14.email = email;
+    user14.age = age;
+    user14.address = address;
+    user14.about7 = userMethods.about7; //here we just call methods reference
+    user14.is18 = userMethods.is18;     //here we just call methods reference
+
+    
+    return user14;
+}
+const user21 = createUser("Badhon", "Islam", "badhon@gmail.com", "25", "my address");
+const user22 = createUser("Isran", "Khan", "isran@gmail.com", "18", "my address");
+const user23 = createUser("Lablu", "Mia", "lablu@gmail.com", "26", "my address");
+console.log(user21);
+console.log(user21.about7());
+console.log(user23.about7());
+
+//****
+// better code than above
+
+const userMethods2 = {
+    about10: function(){
+        return `${this.firstName} is ${this.age} years old`
+    },
+    is19: function(){
+        return this.age >= 18;
+    }
+};
+
+function createUser2(firstName, lastName, email, age, address){
+    const user15 = Object.create(userMethods2); // {}  also create __proto__ from userMehods2  // here __proto__ reference of userMehods2 object
+    user15.firstName = firstName;
+    user15.lastName = lastName;
+    user15.email = email;
+    user15.age = age;
+    user15.address = address;
+    
+    return user15;
+};
+const user24 = createUser2("Badhon", "Islam", "badhon@gmail.com", "25", "my address");
+const user25 = createUser2("Isran", "Khan", "isran@gmail.com", "18", "my address");
+const user26 = createUser2("Lablu", "Mia", "lablu@gmail.com", "26", "my address");
+
+console.log(user25);
+console.log(user25.about10());
+
+// ****
+// prototype  *** better than above code
+
+function createUser3(firstName, lastName, email, age, address){
+    const user16 = Object.create(createUser3.prototype); 
+    user16.firstName = firstName;
+    user16.lastName = lastName;
+    user16.email = email;
+    user16.age = age;
+    user16.address = address;
+    
+    return user16;
+};
+
+createUser3.prototype.about11 = function(){
+    return `${this.firstName} is ${this.age} years old`
+};
+
+createUser3.prototype.is20 = function(){
+    return this.age >= 20;
+};
+createUser3.prototype.sing = function(){
+    return "la la la la"
+};
+
+
+const user27 = createUser3("Badhon", "Islam", "badhon@gmail.com", "25", "my address");
+const user28 = createUser3("Isran", "Khan", "isran@gmail.com", "18", "my address");
+const user29 = createUser3("Lablu", "Mia", "lablu@gmail.com", "26", "my address");
+
+console.log(user29);
+console.log(user29.about11());
+console.log(user29.sing());
+console.log(user29.is20());
+
+
+// ****
+// New
+// New keyword doing three types of work
+//1. create empty object [this = {}];
+//2. return this
+// const user16 = Object.create(createUser3.prototype); and work like this
+
+// when use new keyword need to start capital latter
+
+function CreateUser4(firstName, age){
+    this.firstName = firstName;
+    this.age = age;
+}
+
+CreateUser4.prototype.about12 = function(){
+    console.log(this.firstName, this.age);
+};
+
+const user17 = new CreateUser4("Al-Shamim", 28);
+user17.about12();
+
+
+// ***
+function CreateUser5(firstName, lastName, email, age, address){
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.age = age;
+    this.address = address;
+};
+
+CreateUser5.prototype.about11 = function(){
+    return `${this.firstName} is ${this.age} years old`
+};
+
+CreateUser5.prototype.is20 = function(){
+    return this.age >= 20;
+};
+CreateUser5.prototype.sing = function(){
+    return "la la la la"
+};
+
+
+const user30 = new CreateUser5("Badhon", "Islam", "badhon@gmail.com", "25", "my address");
+const user31 = new CreateUser5("Isran", "Khan", "isran@gmail.com", "18", "my address");
+const user32 = new CreateUser5("Lablu", "Mia", "lablu@gmail.com", "26", "my address");
+
+console.log(user32);
+console.log(user32.about11());
+console.log(user32.sing());
+console.log(user32.is20());
