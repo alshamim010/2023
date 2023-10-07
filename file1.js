@@ -1581,3 +1581,80 @@ console.log(user32);
 console.log(user32.about11());
 console.log(user32.sing());
 console.log(user32.is20());
+
+// *****
+// Class keyword work almost like above code
+
+class CreateUserClass{
+    constructor(firstName, lastName, email, age, address){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.age = age;
+        this.address = address;
+    }
+    about(){
+        return `${this.firstName} is ${this.age} years old`
+    }
+    is18(){
+        return this.age >= 20;
+    }
+    sing(){
+        return "la la la la";
+    }
+}
+
+const user33 = new CreateUserClass("Badhon", "Islam", "badhon@gmail.com", "25", "my address");
+console.log(user33.about());
+// console.log(Object.getPrototypeOf(user33));
+
+// ****
+class Animal {
+    constructor(name, age){
+        this.name = name;
+        this.age = age;
+    }
+    eat(){
+        return `${this.name} is eating`;
+    }
+    
+    isSuperCute(){
+        return this.age <= 1;
+    }
+
+    isCute(){
+        return true;
+    }
+}
+
+// const cat = new Animal("Poppy", 2);
+// console.log(cat); 
+// console.log(cat.eat()); 
+
+// ****
+// inheritance    // if we want to create another animals data then we don't need to create anothe class. we can excess data by the inheritance
+// bellow code is example
+
+class Dog extends Animal {
+
+}
+
+const tommy = new Dog("Cooper", 5);
+console.log(tommy);
+console.log(tommy.eat());
+
+// if I pass another argument then  need to do this
+
+class Dog2 extends Animal {
+    constructor(name, age, speed){
+        super(name, age);
+        this.speed = speed;
+    }
+    run(){
+        return `${this.name} is running at ${this.speed} kmph`
+    }
+}
+
+const tommy2 = new Dog2("tommy2", 3, 50);
+console.log(tommy2);
+console.log(tommy2.run());
