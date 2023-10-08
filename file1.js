@@ -1643,6 +1643,7 @@ const tommy = new Dog("Cooper", 5);
 console.log(tommy);
 console.log(tommy.eat());
 
+// Super
 // if I pass another argument then  need to do this
 
 class Dog2 extends Animal {
@@ -1655,6 +1656,63 @@ class Dog2 extends Animal {
     }
 }
 
+// object has another name which is instance
 const tommy2 = new Dog2("tommy2", 3, 50);
 console.log(tommy2);
 console.log(tommy2.run());
+
+
+// ****
+// getter and setters
+
+class Person{
+    constructor(firstName, lastName, age){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+    // when we use the method as like property then we need to do this
+    get fullName(){
+        return `${this.firstName} ${this.lastName}`
+    }
+
+    // *
+    // setName(firstName, lastName){
+    //     this.firstName = firstName;
+    //     this.lastName = lastName;
+    // }
+    set fullName(fullName){
+        const[firstName, lastName] = fullName.split(" ");
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    // &&
+    // static methods
+    static classInfo(){
+        return `This is person class`;
+    }
+    static desc = "static property";
+
+}
+
+const personGetter = new Person("Lablu", "Mia");
+console.log(personGetter.fullName);
+
+// console.log(personGetter.firstName);
+// *
+// personGetter.setName("Badhon", "Islam");
+// console.log(personGetter.firstName);
+// console.log(personGetter.lastName);
+
+//set fullName
+personGetter.fullName = "Isran khan";
+console.log(personGetter);
+
+// &&
+// we have to call static methods direct from Class
+const info = Person.classInfo();
+console.log(info);
+console.log(Person.desc);
+
+// *********************************************************
